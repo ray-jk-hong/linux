@@ -177,7 +177,7 @@
 		plic: interrupt-controller@c000000 {
 			riscv,ndev = <0x5f>;
 			reg = <0x00 0xc000000 0x00 0x600000>;
-			interrupts-extended = <&cpu0_intc 0x0b &cpu0_intc 0x09>;
+			interrupts-extended = <&cpu0_intc 11 &cpu0_intc 9>;
 			interrupt-controller;
 			compatible = "sifive,plic-1.0.0", "riscv,plic0";
 			#address-cells = <0x00>;
@@ -185,7 +185,7 @@
 		};
 
 		clint@2000000 {
-			interrupts-extended = <&cpu0_intc 0x03 &cpu0_intc 0x07>;
+			interrupts-extended = <&cpu0_intc 3 &cpu0_intc 7>;
 			reg = <0x00 0x2000000 0x00 0x10000>;
 			compatible = "sifive,clint0", "riscv,clint0";
 		};
