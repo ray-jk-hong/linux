@@ -86,10 +86,6 @@
 		compatible = "cfi-flash";
 	};
 
-	aliases {
-		serial0 = "/soc/serial@10000000";
-	};
-
 	chosen {
 		bootargs = "rootwait root=/dev/vda ro";
 		stdout-path = "/soc/serial@10000000";
