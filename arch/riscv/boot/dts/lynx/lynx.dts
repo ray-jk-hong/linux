@@ -184,12 +184,6 @@
 			#interrupt-cells = <0x01>;
 		};
 
-		clint@2000000 {
-			interrupts-extended = <&cpu0_intc 3 &cpu0_intc 7>;
-			reg = <0x00 0x2000000 0x00 0x10000>;
-			compatible = "sifive,clint0", "riscv,clint0";
-		};
-
 		pci@30000000 {
 			interrupt-map-mask = <0x1800 0x00 0x00 0x07>;
 			interrupt-map = <
