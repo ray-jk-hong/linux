@@ -118,7 +118,6 @@
 		};
 
 		test@100000 {
-			phandle = <0x04>;
 			reg = <0x00 0x100000 0x00 0x1000>;
 			compatible = "sifive,test1", "sifive,test0", "syscon";
 		};
