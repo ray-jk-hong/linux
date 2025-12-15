@@ -106,11 +106,17 @@
 		};
 
 		serial@10000000 {
+			compatible = "ns16550a";
+			clock-frequency = <700000>;
+			current-speed = <600>;
+
 			interrupts = <0x0a>;
 			interrupt-parent = <&plic>;
-			clock-frequency = "", "8@";
+
+			reg-shift = <0x2>;
+			reg-io-width = <4>;
+
 			reg = <0x00 0x10000000 0x00 0x100>;
-			compatible = "ns16550a";
 		};
 
 		test@100000 {
