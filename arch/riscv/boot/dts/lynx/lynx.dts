@@ -58,12 +58,33 @@
 			};
 		};
 
+		cpu1: cpu@1 {
+			device_type = "cpu";
+			reg = <0x01>;
+			status = "okay";
+			compatible = "riscv";
+			riscv,cbop-block-size = <0x40>;
+			riscv,cboz-block-size = <0x40>;
+			riscv,cbom-block-size = <0x40>;
+			riscv,isa-extensions = "i", "m", "a", "f", "d", "c", "h", "zic64b", "zicbom", "zicbop", "zicboz", "ziccamoa", "ziccif", "zicclsm", "ziccrse", "zicntr", "zicsr", "zifencei", "zihintntl", "zihintpause", "zihpm", "zmmul", "za64rs", "zaamo", "zalrsc", "zawrs", "zfa", "zca", "zcd", "zba", "zbb", "zbc", "zbs", "sdtrig", "shcounterenw", "shgatpa", "shtvala", "shvsatpa", "shvstvala", "shvstvecd", "ssccptr", "sscounterenw", "ssstrict", "sstc", "sstvala", "sstvecd", "ssu64xl", "svadu", "svvptc";
+			riscv,isa-base = "rv64i";
+			riscv,isa = "rv64imafdch_zic64b_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_ziccrse_zicntr_zicsr_zifencei_zihintntl_zihintpause_zihpm_zmmul_za64rs_zaamo_zalrsc_zawrs_zfa_zca_zcd_zba_zbb_zbc_zbs_sdtrig_shcounterenw_shgatpa_shtvala_shvsatpa_shvstvala_shvstvecd_ssccptr_sscounterenw_ssstrict_sstc_sstvala_sstvecd_ssu64xl_svadu_svvptc";
+			mmu-type = "riscv,sv57";
+
+			cpu1_intc: interrupt-controller {
+				#interrupt-cells = <0x01>;
+				interrupt-controller;
+				compatible = "riscv,cpu-intc";
+			};
+		};
+
 		cpu-map {
-
 			cluster0 {
-
 				core0 {
 					cpu = <&cpu0>;
+				};
+				core1 {
+					cpu = <&cpu1>;
 				};
 			};
 		};
@@ -183,11 +204,24 @@
 		plic: interrupt-controller@c000000 {
 			riscv,ndev = <0x5f>;
 			reg = <0x00 0xc000000 0x00 0x600000>;
-			interrupts-extended = <&cpu0_intc 11 &cpu0_intc 9>;
+			interrupts-extended = <
+				&cpu0_intc 11 &cpu0_intc 9
+				&cpu1_intc 11 &cpu1_intc 9
+			>;
 			interrupt-controller;
 			compatible = "sifive,plic-1.0.0", "riscv,plic0";
 			#address-cells = <0x00>;
 			#interrupt-cells = <0x01>;
+		};
+
+		/* for ipi in opensbi */
+		clint@2000000 {
+			interrupts-extended = <
+				&cpu0_intc 3 &cpu0_intc 7
+				&cpu1_intc 3 &cpu1_intc 7
+			>;
+			reg = <0x00 0x2000000 0x00 0x10000>;
+			compatible = "sifive,clint0", "riscv,clint0";
 		};
 
 		pci@30000000 {
