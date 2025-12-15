@@ -189,9 +189,9 @@ int arch_cpuhp_kick_ap_alive(unsigned int cpu, struct task_struct *tidle)
 #else
 int __cpu_up(unsigned int cpu, struct task_struct *tidle)
 {
-	int ret = 0;
+	int ret;
+    
 	tidle->thread_info.cpu = cpu;
-
 	ret = start_secondary_cpu(cpu, tidle);
 	if (!ret) {
 		wait_for_completion_timeout(&cpu_running,
