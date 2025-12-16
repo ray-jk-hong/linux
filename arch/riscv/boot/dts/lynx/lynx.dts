@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+/* Copyright (c) 2020 Lynx, Inc */
+
 /dts-v1/;
 
 / {
@@ -14,20 +17,25 @@
 	cpus {
 		#address-cells = <0x01>;
 		#size-cells = <0x00>;
-		timebase-frequency = <0x989680>;
+		timebase-frequency = <10000000>;
 
 		cpu0: cpu@0 {
-			device_type = "cpu";
-			reg = <0x00>;
-			status = "okay";
 			compatible = "riscv";
+
+			device_type = "cpu";
+
+			reg = <0>;
+
 			riscv,cbop-block-size = <0x40>;
 			riscv,cboz-block-size = <0x40>;
 			riscv,cbom-block-size = <0x40>;
 			riscv,isa-extensions = "i", "m", "a", "f", "d", "c", "h", "zic64b", "zicbom", "zicbop", "zicboz", "ziccamoa", "ziccif", "zicclsm", "ziccrse", "zicntr", "zicsr", "zifencei", "zihintntl", "zihintpause", "zihpm", "zmmul", "za64rs", "zaamo", "zalrsc", "zawrs", "zfa", "zca", "zcd", "zba", "zbb", "zbc", "zbs", "sdtrig", "shcounterenw", "shgatpa", "shtvala", "shvsatpa", "shvstvala", "shvstvecd", "ssccptr", "sscounterenw", "ssstrict", "sstc", "sstvala", "sstvecd", "ssu64xl", "svadu", "svvptc";
 			riscv,isa-base = "rv64i";
 			riscv,isa = "rv64imafdch_zic64b_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_ziccrse_zicntr_zicsr_zifencei_zihintntl_zihintpause_zihpm_zmmul_za64rs_zaamo_zalrsc_zawrs_zfa_zca_zcd_zba_zbb_zbc_zbs_sdtrig_shcounterenw_shgatpa_shtvala_shvsatpa_shvstvala_shvstvecd_ssccptr_sscounterenw_ssstrict_sstc_sstvala_sstvecd_ssu64xl_svadu_svvptc";
+
 			mmu-type = "riscv,sv57";
+
+			status = "okay";
 
 			cpu0_intc: interrupt-controller {
 				compatible = "riscv,cpu-intc";
@@ -38,10 +46,11 @@
 		};
 
 		cpu1: cpu@1 {
-			device_type = "cpu";
-			reg = <0x01>;
-			status = "okay";
 			compatible = "riscv";
+
+			device_type = "cpu";
+			reg = <1>;
+
 			riscv,cbop-block-size = <0x40>;
 			riscv,cboz-block-size = <0x40>;
 			riscv,cbom-block-size = <0x40>;
@@ -49,6 +58,8 @@
 			riscv,isa-base = "rv64i";
 			riscv,isa = "rv64imafdch_zic64b_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_ziccrse_zicntr_zicsr_zifencei_zihintntl_zihintpause_zihpm_zmmul_za64rs_zaamo_zalrsc_zawrs_zfa_zca_zcd_zba_zbb_zbc_zbs_sdtrig_shcounterenw_shgatpa_shtvala_shvsatpa_shvstvala_shvstvecd_ssccptr_sscounterenw_ssstrict_sstc_sstvala_sstvecd_ssu64xl_svadu_svvptc";
 			mmu-type = "riscv,sv57";
+
+			status = "okay";
 
 			cpu1_intc: interrupt-controller {
 				compatible = "riscv,cpu-intc";
@@ -76,8 +87,8 @@
 	};
 
 	soc {
-		#address-cells = <0x02>;
-		#size-cells = <0x02>;
+		#address-cells = <2>;
+		#size-cells = <2>;
 		compatible = "simple-bus";
 		ranges;
 
@@ -88,7 +99,7 @@
 			reg-shift = <0x2>;
 			reg-io-width = <4>;
 
-			interrupts = <0x0a 0x04>;
+			interrupts = <10 4>; /* 10=irq, 4=IRQ_TYPE_LEVEL_HIGH */
 			interrupt-parent = <&aplic_s>;
 
 			clock-frequency = <700000>;
@@ -108,7 +119,7 @@
 			riscv,num-sources = <96>;
 		};
 
-		interrupt-controller@c000000 {
+		aplic_m: aplic@c000000 {
 			compatible = "riscv,aplic";
 
 			reg = <0x00 0xc000000 0x00 0x8000>;
