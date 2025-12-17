@@ -135,7 +135,20 @@
 			riscv,children = <&aplic_s>;
 			riscv,num-sources = <96>;
 		};
+/*
+		plic: plic@c000000 {
+			compatible = "sifive,plic-1.0.0", "riscv,plic0";
 
+			riscv,ndev = <0x5f>;
+			reg = <0x00 0xc000000 0x00 0x600000>;
+			interrupts-extended = <&cpu0_intc 11 &cpu0_intc 9
+									&cpu1_intc 11 &cpu1_intc 9>;
+			interrupt-controller;
+
+			#address-cells = <0x00>;
+			#interrupt-cells = <0x01>;
+		};
+*/
 		clint@2000000 {
 			compatible = "sifive,clint0", "riscv,clint0";
 
