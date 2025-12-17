@@ -96,7 +96,7 @@
 			clock-frequency = <700000>;
 			current-speed = <600>;
 
-			reg-shift = <0x2>;
+			reg-shift = <2>;
 			reg-io-width = <4>;
 		};
 
@@ -153,7 +153,7 @@
 			interrupt-controller;
 			#interrupt-cells = <0>;
 
-			interrupts-extended = <&cpu0_intc 0x09 &cpu1_intc 0x09>;
+			interrupts-extended = <&cpu0_intc 9 &cpu1_intc 9>;
 			riscv,num-ids = <255>;
 
 			msi-controller;
