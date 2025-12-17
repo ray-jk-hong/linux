@@ -137,31 +137,33 @@
 			reg = <0x00 0x24000000 0x00 0x2000>;
 
 			interrupt-controller;
-			#interrupt-cells = <0x00>;
+			#interrupt-cells = <0>;
 
 			interrupts-extended = <&cpu0_intc 11 &cpu1_intc 11>;
-			msi-controller;
-
 			riscv,num-ids = <255>;
+
+			msi-controller;
 		};
 
 		imsics_s: imsics@28000000 {
 			compatible = "riscv,imsics";
 
 			reg = <0x00 0x28000000 0x00 0x2000>;
-			interrupts-extended = <&cpu0_intc 0x09 &cpu1_intc 0x09>;
-			msi-controller;
+
 			interrupt-controller;
 			#interrupt-cells = <0>;
 
+			interrupts-extended = <&cpu0_intc 0x09 &cpu1_intc 0x09>;
 			riscv,num-ids = <255>;
+
+			msi-controller;
 		};
 
 		clint@2000000 {
 			compatible = "sifive,clint0", "riscv,clint0";
 
-			interrupts-extended = <&cpu0_intc 0x03 &cpu0_intc 0x07
-									&cpu1_intc 0x03 &cpu1_intc 0x07>;
+			interrupts-extended = <&cpu0_intc 3 &cpu0_intc 7
+									&cpu1_intc 3 &cpu1_intc 7>;
 			reg = <0x00 0x2000000 0x00 0x10000>;
 		};
 	};
