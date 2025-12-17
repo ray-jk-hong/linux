@@ -82,7 +82,7 @@
 	};
 
 	chosen {
-		stdout-path = "/soc/serial@10000000";
+		stdout-path = &serial0;
 		rng-seed = <0x55153bfc 0xf91c7096 0x86a28203 0x2f2306f9 0xc3616e29 0x15b1faf8 0x2866078 0x9121f0b9>;
 	};
 
