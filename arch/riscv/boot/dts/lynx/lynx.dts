@@ -96,14 +96,15 @@
 			compatible = "ns16550a";
 
 			reg = <0x00 0x10000000 0x00 0x100>;
-			reg-shift = <0x2>;
-			reg-io-width = <4>;
 
 			interrupts = <10 4>; /* 10=irq, 4=IRQ_TYPE_LEVEL_HIGH */
 			interrupt-parent = <&aplic_s>;
 
 			clock-frequency = <700000>;
 			current-speed = <600>;
+
+			reg-shift = <0x2>;
+			reg-io-width = <4>;
 		};
 
 		aplic_s: aplic@d000000 {
