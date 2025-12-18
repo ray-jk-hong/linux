@@ -31,7 +31,7 @@
 			mmu-type = "riscv,sv57";
 
 			status = "okay";
-			cpu0_intc: interrupt-controller {
+			cpu0_intc: cpu0_intc {
 				compatible = "riscv,cpu-intc";
 
 				#interrupt-cells = <1>;
@@ -54,7 +54,7 @@
 			mmu-type = "riscv,sv57";
 
 			status = "okay";
-			cpu1_intc: interrupt-controller {
+			cpu1_intc: cpu1_intc {
 				compatible = "riscv,cpu-intc";
 
 				#interrupt-cells = <1>;
@@ -131,7 +131,7 @@
 			msi-parent = <&imsics_s>;
 		};
 
-		imsics_m: imsics@24000000 {
+		imsics_m: imsics_m@24000000 {
 			compatible = "riscv,imsics";
 
 			reg = <0x00 0x24000000 0x00 0x2000>;
@@ -145,7 +145,7 @@
 			msi-controller;
 		};
 
-		imsics_s: imsics@28000000 {
+		imsics_s: imsics_s@28000000 {
 			compatible = "riscv,imsics";
 
 			reg = <0x00 0x28000000 0x00 0x2000>;
