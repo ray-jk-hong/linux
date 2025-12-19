@@ -158,13 +158,5 @@
 
 			msi-controller;
 		};
-
-		clint@2000000 {
-			compatible = "sifive,clint0", "riscv,clint0";
-
-			interrupts-extended = <&cpu0_intc 3 &cpu0_intc 7
-									&cpu1_intc 3 &cpu1_intc 7>;
-			reg = <0x00 0x2000000 0x00 0x10000>;
-		};
 	};
 };
