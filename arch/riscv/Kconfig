@@ -889,7 +889,7 @@ config FPU
 
 config IRQ_STACKS
 	bool "Independent irq & softirq stacks" if EXPERT
-	default y
+	default n
 	select HAVE_IRQ_EXIT_ON_IRQ_STACK
 	select HAVE_SOFTIRQ_ON_OWN_STACK
 	help
