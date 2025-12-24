@@ -227,7 +227,6 @@ config RISCV
 	select USER_STACKTRACE_SUPPORT
 	select ZONE_DMA32 if 64BIT
 	select ARCH_SUPPORTS_SCHED_SMT if SMP
-	select HOTPLUG_SMT if SMP
 
 config RUSTC_SUPPORTS_RISCV
 	def_bool y
