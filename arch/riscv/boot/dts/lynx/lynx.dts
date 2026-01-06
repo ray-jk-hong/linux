@@ -62,6 +62,52 @@
 			};
 		};
 
+		cpu2: cpu@2 {
+			compatible = "riscv";
+
+			device_type = "cpu";
+			reg = <2>;
+
+			riscv,cbop-block-size = <0x40>;
+			riscv,cboz-block-size = <0x40>;
+			riscv,cbom-block-size = <0x40>;
+			riscv,isa-extensions = "i", "m", "a", "f", "d", "c", "h", "zic64b", "zicbom", "zicbop", "zicboz", "ziccamoa", "ziccif", "zicclsm", "ziccrse", "zicntr", "zicsr", "zifencei", "zihintntl", "zihintpause", "zihpm", "zmmul", "za64rs", "zaamo", "zalrsc", "zawrs", "zfa", "zca", "zcd", "zba", "zbb", "zbc", "zbs", "sdtrig", "shcounterenw", "shgatpa", "shtvala", "shvsatpa", "shvstvala", "shvstvecd", "smaia", "ssaia", "ssccptr", "sscounterenw", "ssstrict", "sstc", "sstvala", "sstvecd", "ssu64xl", "svadu", "svvptc";
+			riscv,isa-base = "rv64i";
+			riscv,isa = "rv64imafdch_zic64b_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_ziccrse_zicntr_zicsr_zifencei_zihintntl_zihintpause_zihpm_zmmul_za64rs_zaamo_zalrsc_zawrs_zfa_zca_zcd_zba_zbb_zbc_zbs_sdtrig_shcounterenw_shgatpa_shtvala_shvsatpa_shvstvala_shvstvecd_smaia_ssaia_ssccptr_sscounterenw_ssstrict_sstc_sstvala_sstvecd_ssu64xl_svadu_svvptc";
+			mmu-type = "riscv,sv57";
+
+			status = "okay";
+			cpu2_intc: cpu2_intc {
+				compatible = "riscv,cpu-intc";
+
+				#interrupt-cells = <1>;
+				interrupt-controller;
+			};
+		};
+
+		cpu3: cpu@3 {
+			compatible = "riscv";
+
+			device_type = "cpu";
+			reg = <3>;
+
+			riscv,cbop-block-size = <0x40>;
+			riscv,cboz-block-size = <0x40>;
+			riscv,cbom-block-size = <0x40>;
+			riscv,isa-extensions = "i", "m", "a", "f", "d", "c", "h", "zic64b", "zicbom", "zicbop", "zicboz", "ziccamoa", "ziccif", "zicclsm", "ziccrse", "zicntr", "zicsr", "zifencei", "zihintntl", "zihintpause", "zihpm", "zmmul", "za64rs", "zaamo", "zalrsc", "zawrs", "zfa", "zca", "zcd", "zba", "zbb", "zbc", "zbs", "sdtrig", "shcounterenw", "shgatpa", "shtvala", "shvsatpa", "shvstvala", "shvstvecd", "smaia", "ssaia", "ssccptr", "sscounterenw", "ssstrict", "sstc", "sstvala", "sstvecd", "ssu64xl", "svadu", "svvptc";
+			riscv,isa-base = "rv64i";
+			riscv,isa = "rv64imafdch_zic64b_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_ziccrse_zicntr_zicsr_zifencei_zihintntl_zihintpause_zihpm_zmmul_za64rs_zaamo_zalrsc_zawrs_zfa_zca_zcd_zba_zbb_zbc_zbs_sdtrig_shcounterenw_shgatpa_shtvala_shvsatpa_shvstvala_shvstvecd_smaia_ssaia_ssccptr_sscounterenw_ssstrict_sstc_sstvala_sstvecd_ssu64xl_svadu_svvptc";
+			mmu-type = "riscv,sv57";
+
+			status = "okay";
+			cpu3_intc: cpu3_intc {
+				compatible = "riscv,cpu-intc";
+
+				#interrupt-cells = <1>;
+				interrupt-controller;
+			};
+		};
+
 		cpu-map {
 			cluster0 {
 				core0 {
@@ -70,6 +116,12 @@
 					};
 					thread1 {
 						cpu = <&cpu1>;
+					};
+					thread2 {
+						cpu = <&cpu2>;
+					};
+					thread3 {
+						cpu = <&cpu3>;
 					};
 				};
 			};
@@ -155,12 +207,12 @@
 		imsics_m: imsics_m@24000000 {
 			compatible = "riscv,imsics";
 
-			reg = <0x00 0x24000000 0x00 0x2000>;
+			reg = <0x00 0x24000000 0x00 0x4000>;
 
 			interrupt-controller;
 			#interrupt-cells = <0>;
 
-			interrupts-extended = <&cpu0_intc 11 &cpu1_intc 11>;
+			interrupts-extended = <&cpu0_intc 11 &cpu1_intc 11 &cpu2_intc 11 &cpu3_intc 11>;
 			riscv,num-ids = <255>;
 
 			msi-controller;
@@ -169,7 +221,7 @@
 		imsics_s: imsics_s@28000000 {
 			compatible = "riscv,imsics";
 
-			reg = <0x00 0x28000000 0x00 0x2000>;
+			reg = <0x00 0x28000000 0x00 0x4000>;
 /*
 			// for aia-guests=2
 			reg = <0x00 0x28000000 0x00 0x8000>;
@@ -178,7 +230,7 @@
 			interrupt-controller;
 			#interrupt-cells = <0>;
 
-			interrupts-extended = <&cpu0_intc 9 &cpu1_intc 9>;
+			interrupts-extended = <&cpu0_intc 9 &cpu1_intc 9 &cpu2_intc 9 &cpu3_intc 9>;
 			riscv,num-ids = <255>;
 
 			msi-controller;
