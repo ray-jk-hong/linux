@@ -134,9 +134,10 @@
 	};
 
 	fw-cfg@10100000 {
+		compatible = "qemu,fw-cfg-mmio";
+
 		dma-coherent;
 		reg = <0x00 0x10100000 0x00 0x18>;
-		compatible = "qemu,fw-cfg-mmio";
 	};
 
 	flash@20000000 {
