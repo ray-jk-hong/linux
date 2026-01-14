@@ -6,6 +6,28 @@
 	compatible = "riscv-virtio";
 	model = "lynx,qemu";
 
+	poweroff {
+		value = <0x5555>;
+		offset = <0x00>;
+		regmap = <0x09>;
+		compatible = "syscon-poweroff";
+	};
+
+	reboot {
+		value = <0x7777>;
+		offset = <0x00>;
+		regmap = <0x09>;
+		compatible = "syscon-reboot";
+	};
+
+	platform-bus@4000000 {
+		interrupt-parent = <&aplic_s>;
+		ranges = <0x00 0x00 0x4000000 0x2000000>;
+		#address-cells = <0x01>;
+		#size-cells = <0x01>;
+		compatible = "qemu,platform", "simple-bus";
+	};
+
 	memory@80000000 {
 		device_type = "memory";
 		reg = <0x00 0x80000000 0x01 0x00000000>;
