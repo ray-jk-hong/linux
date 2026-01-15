@@ -180,10 +180,12 @@
 		ranges;
 
 		rtc@101000 {
+			compatible = "google,goldfish-rtc";
+
+			reg = <0x00 0x101000 0x00 0x1000>;
+
 			interrupts = <0x0b 0x04>;
 			interrupt-parent = <&aplic_s>;
-			reg = <0x00 0x101000 0x00 0x1000>;
-			compatible = "google,goldfish-rtc";
 		};
 
 		serial0: serial@10000000 {
@@ -377,6 +379,5 @@
 			#interrupt-cells = <0x01>;
 			#address-cells = <0x03>;
 		};
-
 	};
 };
