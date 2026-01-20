@@ -7,25 +7,28 @@
 	model = "lynx,qemu";
 
 	poweroff {
+		compatible = "syscon-poweroff";
+
 		value = <0x5555>;
 		offset = <0x00>;
 		regmap = <0x09>;
-		compatible = "syscon-poweroff";
 	};
 
 	reboot {
+		compatible = "syscon-reboot";
+
 		value = <0x7777>;
 		offset = <0x00>;
 		regmap = <0x09>;
-		compatible = "syscon-reboot";
 	};
 
 	platform-bus@4000000 {
+		compatible = "qemu,platform", "simple-bus";
+
 		interrupt-parent = <&aplic_s>;
 		ranges = <0x00 0x00 0x4000000 0x2000000>;
 		#address-cells = <0x01>;
 		#size-cells = <0x01>;
-		compatible = "qemu,platform", "simple-bus";
 	};
 
 	memory@80000000 {
@@ -341,8 +344,10 @@
 		iommu0: iommu@3010000 {
 			compatible = "riscv,iommu";
 			reg = <0x0 0x3010000 0x0 0x1000>;
+
 			interrupt-parent = <&aplic_s>;
-			interrupts = <32 4>;
+			interrupts = <36 4>; // In qemu, XX_IOMMU_SYS_IRQ start from 36
+
 			#iommu-cells = <1>;
 		};
 */
@@ -387,5 +392,6 @@
 			#interrupt-cells = <0x01>;
 			#address-cells = <0x03>;
 		};
+
 	};
 };
