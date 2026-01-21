@@ -254,12 +254,10 @@
 		imsics_s: imsics_s@28000000 {
 			compatible = "riscv,imsics";
 
-			reg = <0x00 0x28000000 0x00 0x4000>;
-/*
 			// for aia-guests=2
-			reg = <0x00 0x28000000 0x00 0x8000>;
+			reg = <0x00 0x28000000 0x00 0x10000>;
 			riscv,guest-index-bits = <0x02>;
-*/
+
 			interrupt-controller;
 			#interrupt-cells = <0>;
 
