@@ -390,19 +390,19 @@
 			#interrupt-cells = <0x01>;
 			#address-cells = <0x03>;
 
-            /*
-             * The IOMMU manages all functions in this PCI domain except
-             * itself. Omit BDF 00:01.0.
-             */
-            iommu-map = <0x0 &iommu0 0x0 0x8>,
-                        <0x9 &iommu0 0x9 0xfff7>;
+			/*
+			* The IOMMU manages all functions in this PCI domain except
+			* itself. Omit BDF 00:01.0.
+			*/
+			iommu-map = <0x0 &iommu0 0x0 0x8>,
+				<0x9 &iommu0 0x9 0xfff7>;
 
-            /* The IOMMU programming interface uses slot 00:01.0 */
-            iommu0: iommu@1,0 {
-                compatible = "riscv,pci-iommu";
-                reg = <0x800 0 0 0 0>;
-                #iommu-cells = <1>;
-            };
+			/* The IOMMU programming interface uses slot 00:01.0 */
+			iommu0: iommu@1,0 {
+				compatible = "riscv,pci-iommu";
+				reg = <0x800 0 0 0 0>;
+				#iommu-cells = <1>;
+			};
 		};
 	};
 };
