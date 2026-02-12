@@ -255,7 +255,12 @@
 			compatible = "riscv,imsics";
 
 			// for aia-guests=2
-			reg = <0x00 0x28000000 0x00 0x10000>;
+			reg = <
+				0x00 0x28000000 0x00 0x4000	// CPU 0
+				0x00 0x28004000 0x00 0x4000	// CPU 1
+				0x00 0x28008000 0x00 0x4000	// CPU 2
+				0x00 0x2800c000 0x00 0x4000	// CPU 3
+			>;
 			riscv,guest-index-bits = <0x02>;
 
 			interrupt-controller;
@@ -395,8 +400,8 @@
 			* The IOMMU manages all functions in this PCI domain except
 			* itself. Omit BDF 00:01.0.
 			*/
-			iommu-map = <0x0 &iommu0 0x0 0x8>,
-				<0x9 &iommu0 0x9 0xfff7>;
+			iommu-map = <0x0 &iommu0 0x0 0x10>,
+				<0x11 &iommu0 0x11 0xffef>;
 
 			/* The IOMMU programming interface uses slot 00:01.0 */
 			iommu0: iommu@1,0 {
