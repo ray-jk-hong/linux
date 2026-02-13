@@ -46,6 +46,8 @@ int kvm_riscv_mmu_ioremap(struct kvm *kvm, gpa_t gpa, phys_addr_t hpa,
 		.gfp_custom = (in_atomic) ? GFP_ATOMIC | __GFP_ACCOUNT : 0,
 		.gfp_zero = __GFP_ZERO,
 	};
+	unsigned long val = _PAGE_PRESENT | _PAGE_ACCESSED |
+		_PAGE_READ | _PAGE_DIRTY;
 	struct kvm_gstage_mapping map;
 	struct kvm_gstage gstage;
 
@@ -56,17 +58,16 @@ int kvm_riscv_mmu_ioremap(struct kvm *kvm, gpa_t gpa, phys_addr_t hpa,
 
 	end = (gpa + size + PAGE_SIZE - 1) & PAGE_MASK;
 	pfn = __phys_to_pfn(hpa);
-	prot = pgprot_noncached(__pgprot(_PAGE_PRESENT | _PAGE_ACCESSED |
-		_PAGE_READ | _PAGE_WRITE));
+
+	if (writable)
+		val |= _PAGE_WRITE;
+
+	prot = pgprot_noncached(__pgprot(val));
 
 	for (addr = gpa; addr < end; addr += PAGE_SIZE) {
 		map.addr = addr;
 		map.pte = pfn_pte(pfn, prot);
-		map.pte = pte_mkdirty(map.pte);
 		map.level = 0;
-
-		if (!writable)
-			map.pte = pte_wrprotect(map.pte);
 
 		ret = kvm_mmu_topup_memory_cache(&pcache, kvm_riscv_gstage_pgd_levels);
 		if (ret)
