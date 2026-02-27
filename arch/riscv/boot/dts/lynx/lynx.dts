@@ -1,4 +1,9 @@
+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+/* Copyright (c) 2026-2026 Lynx, Inc */
+
 /dts-v1/;
+
+/include/ "lynx-p100.dtsi"
 
 / {
 	#address-cells = <0x02>;

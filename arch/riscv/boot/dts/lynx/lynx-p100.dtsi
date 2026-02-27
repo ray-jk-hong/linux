@@ -1,0 +1,13 @@
+/ {
+	#address-cells = <2>;
+	#size-cells = <2>;
+	compatible = "riscv-virtio";
+
+	/* High-speed oscillator */
+	hosc: hosc {
+		compatible = "fixed-clock";
+		clock-frequency = <24000000>; // 24M HZ
+		#clock-cells = <0>;
+		clock-output-names = "hosc";
+	};
+};
