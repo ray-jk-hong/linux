@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: GPL-2.0
+
+menuconfig CLK_LYNX
+	bool "Lynx driver support"
+	depends on ARCH_LYNX
+	default ARCH_LYNX
+	help
+	  CLK drivers for Lynx.
+
+if CLK_LYNX
+
+config CLK_LYNX_P100
+	bool "Lynx P100 clock controller support"
+	depends on RISCV || COMPILE_TEST
+	default y
+	help
+	  Build the driver for Lynx P100 Clock Driver.
+
+endif
