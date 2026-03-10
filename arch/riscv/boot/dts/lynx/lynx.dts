@@ -147,10 +147,14 @@
 					thread1 {
 						cpu = <&cpu1>;
 					};
-					thread2 {
+				};
+			};
+			cluster1 {
+				core0 {
+					thread0 {
 						cpu = <&cpu2>;
 					};
-					thread3 {
+					thread1 {
 						cpu = <&cpu3>;
 					};
 				};
