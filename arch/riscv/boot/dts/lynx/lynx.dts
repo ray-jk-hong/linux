@@ -164,6 +164,7 @@
 
 	chosen {
 		stdout-path = &serial0;
+		boot-hart-id = <0>;
 		rng-seed = <0xdc554f06 0xa2cd0251 0x6340a9d7 0x5cab3a92 0x57ab6d94 0x9806eb81 0x83fb4889 0x23e52898>;
 	};
 
