@@ -1,7 +1,7 @@
 / {
 	#address-cells = <2>;
 	#size-cells = <2>;
-	compatible = "riscv-virtio";
+	compatible = "lynx,p100";
 
 	/* High-speed oscillator */
 	hosc: hosc {
