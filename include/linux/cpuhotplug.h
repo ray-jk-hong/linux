@@ -521,7 +521,11 @@ void cpuhp_ap_report_dead(void);
 void arch_cpuhp_cleanup_dead_cpu(unsigned int cpu);
 #else
 static inline void cpuhp_ap_report_dead(void) { }
+#ifndef CONFIG_HOTPLUG_CPU
 static inline void arch_cpuhp_cleanup_dead_cpu(unsigned int cpu) { }
+#else
+void arch_cpuhp_cleanup_dead_cpu(unsigned int cpu);
+#endif
 #endif
 
 #endif
