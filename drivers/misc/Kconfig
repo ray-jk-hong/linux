@@ -606,6 +606,17 @@ config NSM
 	  To compile this driver as a module, choose M here.
 	  The module will be called nsm.
 
+config RVD
+	tristate "RISC-V rvd misc device (CSR / OpenSBI proxy)"
+	depends on RISCV
+	help
+	  Provides /dev/rvd, a small interface for privileged userspace to
+	  submit CSR-related operations that the kernel can forward to
+	  OpenSBI (wire-up and CSR policy are driver-specific).
+
+	  To compile this driver as a module, choose M here: the module will
+	  be called rvd.
+
 config MARVELL_CN10K_DPI
 	tristate "Octeon CN10K DPI driver"
 	depends on PCI && PCI_IOV
