@@ -26,9 +26,8 @@
 
 #include <uapi/linux/rvd.h>
 
-/* Vendor SBI extension this driver talks to. Match your OpenSBI build. */
-#define RVD_SBI_EXT_ID			0x525644	/* 'RVD' in experimental range */
-#define RVD_SBI_FID_CSR_READ		0u
+#define RVD_SBI_EXT_ID			0x525644
+#define RVD_SBI_FID_CSR_READ	0u
 
 struct rvd_csr_entry {
 	const char *name;
@@ -36,8 +35,7 @@ struct rvd_csr_entry {
 };
 
 /*
- * Allowlist of CSRs that userspace is permitted to read through SBI. Add
- * entries here as needed; names are matched case-insensitively.
+ * Whitelist of CSRs that userspace is permitted to read through SBI.
  */
 static const struct rvd_csr_entry rvd_csr_table[] = {
 	/* Unprivileged counters */
@@ -55,7 +53,6 @@ static const struct rvd_csr_entry rvd_csr_table[] = {
 	{ "menvcfg",    CSR_MENVCFG    },
 	{ "misa",       CSR_MISA       },
 
-	/* Supervisor-mode trap setup / handling */
 	{ "sstatus",    CSR_SSTATUS    },
 	{ "sie",        CSR_SIE        },
 	{ "stvec",      CSR_STVEC      },
@@ -99,7 +96,6 @@ static int rvd_do_csr_read(struct rvd_csr_req *req)
 {
 	int err;
 
-	/* Make sure the name is NUL-terminated within the buffer. */
 	req->name[RVD_CSR_NAME_MAX - 1] = '\0';
 	if (req->name[0] == '\0')
 		return -EINVAL;
