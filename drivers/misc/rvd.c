@@ -45,6 +45,16 @@ static const struct rvd_csr_entry rvd_csr_table[] = {
 	{ "time",       CSR_TIME    },
 	{ "instret",    CSR_INSTRET },
 
+	{ "mscratch",   CSR_MSCRATCH   },
+	{ "mepc",       CSR_MEPC       },
+	{ "mcause",     CSR_MCAUSE     },
+	{ "mtval",      CSR_MTVAL      },
+	{ "mip",        CSR_MIP        },
+	{ "mie",        CSR_MIE        },
+	{ "mideleg",    CSR_MIDELEG    },
+	{ "menvcfg",    CSR_MENVCFG    },
+	{ "misa",       CSR_MISA       },
+
 	/* Supervisor-mode trap setup / handling */
 	{ "sstatus",    CSR_SSTATUS    },
 	{ "sie",        CSR_SIE        },
