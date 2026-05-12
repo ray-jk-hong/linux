@@ -63,7 +63,8 @@
 				"zbs", "sdtrig", "shcounterenw", "shgatpa", "shtvala",
 				"shvsatpa", "shvstvala", "shvstvecd", "smaia", "ssaia",
 				"ssccptr", "sscounterenw", "ssstrict", "sstc", "sstvala",
-				"sstvecd", "ssu64xl", "svadu", "svvptc", "sscofpmf";
+				"sstvecd", "ssu64xl", "svadu", "svvptc", "sscofpmf",
+				"svnapot", "svpbmt";
 			riscv,isa-base = "rv64i";
 			riscv,isa = "rv64imafdch_zabha_zacas_zic64b_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_ziccrse_zicntr_zicsr_zifencei_zihintntl_zihintpause_zihpm_zmmul_za64rs_zaamo_zalrsc_zawrs_zfa_zca_zcd_zba_zbb_zbc_zbs_sdtrig_shcounterenw_shgatpa_shtvala_shvsatpa_shvstvala_shvstvecd_smaia_ssaia_ssccptr_sscounterenw_ssstrict_sstc_sstvala_sstvecd_ssu64xl_svadu_svvptc_sscofpmf";
 			mmu-type = "riscv,sv39";
@@ -94,7 +95,8 @@
 				"zbs", "sdtrig", "shcounterenw", "shgatpa", "shtvala",
 				"shvsatpa", "shvstvala", "shvstvecd", "smaia", "ssaia",
 				"ssccptr", "sscounterenw", "ssstrict", "sstc", "sstvala",
-				"sstvecd", "ssu64xl", "svadu", "svvptc", "sscofpmf";
+				"sstvecd", "ssu64xl", "svadu", "svvptc", "sscofpmf",
+				"svnapot", "svpbmt";
 			riscv,isa-base = "rv64i";
 			riscv,isa = "rv64imafdch_zabha_zacas_zic64b_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_ziccrse_zicntr_zicsr_zifencei_zihintntl_zihintpause_zihpm_zmmul_za64rs_zaamo_zalrsc_zawrs_zfa_zca_zcd_zba_zbb_zbc_zbs_sdtrig_shcounterenw_shgatpa_shtvala_shvsatpa_shvstvala_shvstvecd_smaia_ssaia_ssccptr_sscounterenw_ssstrict_sstc_sstvala_sstvecd_ssu64xl_svadu_svvptc_sscofpmf";
 			mmu-type = "riscv,sv39";
@@ -125,7 +127,8 @@
 				"zbs", "sdtrig", "shcounterenw", "shgatpa", "shtvala",
 				"shvsatpa", "shvstvala", "shvstvecd", "smaia", "ssaia",
 				"ssccptr", "sscounterenw", "ssstrict", "sstc", "sstvala",
-				"sstvecd", "ssu64xl", "svadu", "svvptc", "sscofpmf";
+				"sstvecd", "ssu64xl", "svadu", "svvptc", "sscofpmf",
+				"svnapot", "svpbmt";
 			riscv,isa-base = "rv64i";
 			riscv,isa = "rv64imafdch_zabha_zacas_zic64b_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_ziccrse_zicntr_zicsr_zifencei_zihintntl_zihintpause_zihpm_zmmul_za64rs_zaamo_zalrsc_zawrs_zfa_zca_zcd_zba_zbb_zbc_zbs_sdtrig_shcounterenw_shgatpa_shtvala_shvsatpa_shvstvala_shvstvecd_smaia_ssaia_ssccptr_sscounterenw_ssstrict_sstc_sstvala_sstvecd_ssu64xl_svadu_svvptc_sscofpmf";
 			mmu-type = "riscv,sv39";
@@ -156,7 +159,8 @@
 				"zbs", "sdtrig", "shcounterenw", "shgatpa", "shtvala",
 				"shvsatpa", "shvstvala", "shvstvecd", "smaia", "ssaia",
 				"ssccptr", "sscounterenw", "ssstrict", "sstc", "sstvala",
-				"sstvecd", "ssu64xl", "svadu", "svvptc", "sscofpmf";
+				"sstvecd", "ssu64xl", "svadu", "svvptc", "sscofpmf",
+				"svnapot", "svpbmt";
 			riscv,isa-base = "rv64i";
 			riscv,isa = "rv64imafdch_zabha_zacas_zic64b_zicbom_zicbop_zicboz_ziccamoa_ziccif_zicclsm_ziccrse_zicntr_zicsr_zifencei_zihintntl_zihintpause_zihpm_zmmul_za64rs_zaamo_zalrsc_zawrs_zfa_zca_zcd_zba_zbb_zbc_zbs_sdtrig_shcounterenw_shgatpa_shtvala_shvsatpa_shvstvala_shvstvecd_smaia_ssaia_ssccptr_sscounterenw_ssstrict_sstc_sstvala_sstvecd_ssu64xl_svadu_svvptc_sscofpmf";
 			mmu-type = "riscv,sv39";
